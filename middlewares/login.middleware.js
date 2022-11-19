@@ -1,13 +1,12 @@
 import joi from "joi";
 
-export function validateRegister(req, res, next) {
-  const registerSchema = joi.object({
+export function validateLogin(req, res, next) {
+  const loginSchema = joi.object({
     email: joi.string().email().required(),
-    name: joi.string().min(3).required(),
     password: joi.string().required().min(8),
   });
 
-  const validation = registerSchema.validate(req.body, { abortEarly: false });
+  const validation = loginSchema.validate(req.body, { abortEarly: false });
 
   if (validation.error) {
     return res

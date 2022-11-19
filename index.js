@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import { registerUser } from "./controllers/signup.controller.js";
 import { validateRegister } from "./middlewares/register.middleware.js";
+import { validateLogin } from "./middlewares/login.middleware.js";
 
 const app = express();
 app.use(express.json());
@@ -21,5 +22,7 @@ try {
 export const db = mongoClient.db("myWallet");
 
 app.post("/signUp", validateRegister, registerUser);
+
+app.post("/signIn",validateLogin,logIn)
 
 app.listen(5000, () => console.log("running in port 5000"));
