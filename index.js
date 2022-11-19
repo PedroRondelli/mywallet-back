@@ -3,8 +3,7 @@ import { MongoClient } from "mongodb";
 import dotenv from "dotenv";
 import cors from "cors";
 import { registerUser } from "./controllers/signup.controller.js";
-// import bcrypt from "bcrypt";
-// import joi from "joi";
+import { validateRegister } from "./middlewares/register.middleware.js";
 
 const app = express();
 app.use(express.json());
@@ -21,6 +20,6 @@ try {
 
 export const db = mongoClient.db("myWallet");
 
-app.post("/signUp", registerUser);
+app.post("/signUp", validateRegister, registerUser);
 
 app.listen(5000, () => console.log("running in port 5000"));
