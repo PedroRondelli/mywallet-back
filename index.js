@@ -7,6 +7,7 @@ import { validateRegister } from "./middlewares/register.middleware.js";
 import { validateLogin } from "./middlewares/login.middleware.js";
 import { logIn } from "./controllers/login.controller.js";
 import { validateExtract } from "./middlewares/extract.middleware.js";
+import { updateExpenses } from "./controllers/extract.controller.js";
 
 const app = express();
 app.use(express.json());
@@ -27,6 +28,6 @@ app.post("/signUp", validateRegister, registerUser);
 
 app.post("/signIn", validateLogin, logIn);
 
-app.post("/credit",validateExtract,credit);
+app.post("/extract",validateExtract,updateExpenses);
 
 app.listen(5000, () => console.log("running in port 5000"));

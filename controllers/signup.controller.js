@@ -2,7 +2,7 @@ import bcrypt from "bcrypt";
 import { db } from "../index.js";
 
 export async function registerUser(req, res) {
-  const { email, name, password } = req.body;
+  const { email, password } = req.body;
 
   const register = { ...req.body, password: bcrypt.hashSync(password, 10) };
   const usersCollection = db.collection("users");

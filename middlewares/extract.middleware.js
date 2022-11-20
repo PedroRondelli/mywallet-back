@@ -1,13 +1,13 @@
-import joi, { object } from "joi";
+import joi from "joi";
 
 export function validateExtract(req, res, next) {
-  const creditSchema = joi.object({
+  const extractSchema = joi.object({
     value: joi.number().required(),
-    description: joi.string().min(3),
+    description: joi.string().min(3).required(),
     creditOrDebit: joi.string().valid("credit", "debit").required(),
   });
 
-  const validation = creditSchema.validate(req.body, { abortEarly: false });
+  const validation = extractSchema.validate(req.body, { abortEarly: false });
 
   if (validation.error) {
     return res
