@@ -6,6 +6,7 @@ import { registerUser } from "./controllers/signup.controller.js";
 import { validateRegister } from "./middlewares/register.middleware.js";
 import { validateLogin } from "./middlewares/login.middleware.js";
 import { logIn } from "./controllers/login.controller.js";
+import { validateExtract } from "./middlewares/extract.middleware.js";
 
 const app = express();
 app.use(express.json());
@@ -24,6 +25,8 @@ export const db = mongoClient.db("myWallet");
 
 app.post("/signUp", validateRegister, registerUser);
 
-app.post("/signIn",validateLogin,logIn)
+app.post("/signIn", validateLogin, logIn);
+
+app.post("/credit",validateExtract,credit);
 
 app.listen(5000, () => console.log("running in port 5000"));
