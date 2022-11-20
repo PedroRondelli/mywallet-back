@@ -5,6 +5,7 @@ import cors from "cors";
 import { registerUser } from "./controllers/signup.controller.js";
 import { validateRegister } from "./middlewares/register.middleware.js";
 import { validateLogin } from "./middlewares/login.middleware.js";
+import { logIn } from "./controllers/login.controller.js";
 
 const app = express();
 app.use(express.json());
