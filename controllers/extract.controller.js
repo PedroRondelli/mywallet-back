@@ -14,12 +14,16 @@ export async function updateExpenses(req, res) {
       const accountExist = await extracts.findOne({ userId });
       console.log(accountExist);
       if (accountExist) {
-        console.log("já tem po");
+        const { arrayAccount } = accountExist;
+        const updatedAccount = [...arrayAccount, bonusOrBurden];
+        await extracts.updateOne(
+          { userId },
+          { $set: { arrayAccount: updatedAccount } }
+        );
         return res.sendStatus(200);
       }
       const arrayAccount = [bonusOrBurden];
-      const objetoDeInsersao = { userId, arrayAccount };
-      await extracts.insertOne(objetoDeInsersao);
+      await extracts.insertOne({ userId, arrayAccount });
       return res.sendStatus(200);
     }
 
