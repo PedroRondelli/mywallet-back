@@ -30,4 +30,6 @@ app.post("/signIn", validateLogin, logIn);
 
 app.post("/extract",validateExtract,updateExpenses);
 
+app.get("/extract",getUserExtract)
+
 app.listen(5000, () => console.log("running in port 5000"));
