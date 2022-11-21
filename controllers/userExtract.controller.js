@@ -1,6 +1,6 @@
 import { db } from "../index.js";
 
-async function getUserExtract(req, res) {
+export async function getUserExtract(req, res) {
   const token = req.headers.authorization.replace("Bearer ", "");
   const sessions = db.collection("sessions");
   const extracts = db.collection("extracts");

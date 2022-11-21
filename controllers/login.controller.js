@@ -10,7 +10,7 @@ export async function logIn(req, res) {
     const userRegistered = await usersCollection.findOne({ email });
 
     if (!userRegistered) {
-      return res.sendStatus(401);
+      return res.send("User not registred").status(401);
     }
     const passwordIsCorrect = bcrypt.compareSync(
       password,
