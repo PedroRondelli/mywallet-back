@@ -1,7 +1,7 @@
 import { db } from "../index.js";
 
 export async function deleteSession(req, res) {
-  const sessions = db.collections("sessions");
+  const sessions = db.collection("sessions");
   const token = req.headers.authorization.replace("Bearer ", "");
   try {
     const deletingSession = await sessions.findOne({ token });

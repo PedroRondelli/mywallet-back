@@ -12,6 +12,7 @@ export async function getUserExtract(req, res) {
       res.status(200).send(arrayAccount);
       return;
     }
+    res.status(200).send([])
   } catch (erro) {
     console.log(erro);
   }
