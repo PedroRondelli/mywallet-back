@@ -5,6 +5,7 @@ export function validateExtract(req, res, next) {
     value: joi.number().required(),
     description: joi.string().min(3).required(),
     creditOrDebit: joi.string().valid("credit", "debit").required(),
+    date: joi.string(),
   });
 
   const validation = extractSchema.validate(req.body, { abortEarly: false });
